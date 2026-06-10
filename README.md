@@ -1,16 +1,35 @@
-# Microservices Study
+# Spring Microservices Learning
 
-Projeto de estudos sobre arquitetura de microserviços utilizando Java e Spring Boot.
+Projeto de estudos desenvolvido para aprender arquitetura de microserviços utilizando Java e Spring Boot.
 
 ## Arquitetura
 
+```text
+Product Service
+       ↑
+       │ HTTP
+       ↓
+Order Service
+```
+
+## Microserviços
+
 ### Product Service
 
-Responsável pelo cadastro e consulta de produtos.
+Responsável por:
+
+* Cadastro de produtos
+* Consulta de produtos
+* Busca por ID
 
 ### Order Service
 
-Responsável pelo cadastro de pedidos e validação de produtos através da comunicação com o Product Service.
+Responsável por:
+
+* Cadastro de pedidos
+* Consulta de pedidos
+* Validação de produtos antes da criação do pedido
+* Comunicação com Product Service
 
 ## Tecnologias
 
@@ -21,20 +40,23 @@ Responsável pelo cadastro de pedidos e validação de produtos através da comu
 * RestTemplate
 * Maven
 
-## Funcionalidades
+## Funcionalidades implementadas
 
-* Cadastro de produtos
-* Consulta de produtos
-* Cadastro de pedidos
-* Validação de produto antes da criação do pedido
+* CRUD de produtos
+* CRUD de pedidos
 * Comunicação entre microserviços via HTTP
-* Agregação de dados entre serviços
+* Validação de produto antes da criação do pedido
+* Endpoint de agregação de dados entre serviços
 
 ## Próximos passos
 
-* Tratamento global de exceções
+* Global Exception Handler
 * Bean Validation
 * PostgreSQL
 * Docker
 * RabbitMQ
 * API Gateway
+* Service Discovery
+
+```
+```
