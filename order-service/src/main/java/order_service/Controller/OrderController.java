@@ -1,10 +1,10 @@
 package order_service.Controller;
 
+import jakarta.validation.Valid;
 import order_service.Cliente.ProdutoCliente;
 import order_service.Entity.OrderEntity;
 import order_service.Service.OrderService;
 import order_service.dto.OrderDetalhesResponse;
-import order_service.dto.ProdutoResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class OrderController {
     }
 
     @PostMapping("/criar")
-    public OrderEntity gerarOS(@RequestBody OrderEntity order) {
+    public OrderEntity gerarOS(@Valid  @RequestBody OrderEntity order) {
         return orderService.gerarOS(order);
     }
 
