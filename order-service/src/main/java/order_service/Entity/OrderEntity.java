@@ -1,6 +1,8 @@
 package order_service.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,10 @@ public class OrderEntity {
     private Long id;
 
     @Column(nullable = false)
+    @NotNull
     private Long produtoId;
+
     @Column(nullable = false)
+    @Positive
     private Integer quantidade;
 }

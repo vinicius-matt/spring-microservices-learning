@@ -2,6 +2,7 @@ package order_service.Service;
 
 import order_service.Cliente.ProdutoCliente;
 import order_service.Entity.OrderEntity;
+import order_service.Exception.ProdutoException;
 import order_service.Repository.OrderRepository;
 import order_service.dto.OrderDetalhesResponse;
 import order_service.dto.ProdutoResponse;
@@ -21,10 +22,10 @@ public class OrderService {
         this.produtoCliente = produtoCliente;
     }
 
+    //Adicionar validacao para erro ao gerar OS depois(?)
     public OrderEntity gerarOS(OrderEntity orderEntity) {
 
         try {
-
             produtoCliente.buscarProduto(
                     orderEntity.getProdutoId()
             );
@@ -33,11 +34,12 @@ public class OrderService {
 
         } catch (HttpClientErrorException.NotFound e) {
 
-            throw new RuntimeException(
+            throw new ProdutoException(
                     "Produto não encontrado"
             );
         }
     }
+
     public List<OrderEntity> listarTodasOS() {
         return orderRepository.findAll();
     }
@@ -49,6 +51,11 @@ public class OrderService {
 
     public OrderDetalhesResponse buscarDetalhes(Long id) {
         OrderEntity order = buscarOS(id);
+
+        if(produtoCliente.buscarProduto(order.getProdutoId()) == null) {
+            throw new ProdutoException("Produto não encontrado");
+        }
+
         ProdutoResponse produto =
                 produtoCliente.buscarProduto(
                         order.getProdutoId()
