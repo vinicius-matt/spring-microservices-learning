@@ -15,7 +15,7 @@ public class ProdutoCliente {
 
     public ProdutoResponse buscarProduto(Long id) {
         return restTemplate.getForObject(
-                "http://localhost:8081/produto/" + id,
+                "http://localhost:8080/produto/" + id,
                 ProdutoResponse.class
         );
     }
