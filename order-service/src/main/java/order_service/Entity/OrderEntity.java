@@ -21,9 +21,11 @@ public class OrderEntity {
 
     @Column(nullable = false)
     @NotNull
+    @Positive
     private Long produtoId;
 
     @Column(nullable = false)
     @Positive
+    @NotNull
     private Integer quantidade;
 }
