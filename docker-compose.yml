@@ -10,5 +10,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  product-service:
+    build: ./product-service
+    container_name: product-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
